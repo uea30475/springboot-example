@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+		<header class="ticky" th:fragment="header">
+			<div class="logo">JETY</div>
+			<div class="wrap">
+				<div class="search">
+					<form method="GET" th:action="@{/search}">
+					<input type="text" id="searchTerm"  class="searchTerm"
+						placeholder="What are you looking for?" name="q"  th:value="${q}">
+					<button type="submit" class="searchButton"><i class="fa fa-search"></i></button></form>
+<!-- 					<div class="search-item">
+ 						<div class="main" style="border-radius: 2px">
+							<ul style="padding: 0; margin: 0">
+								<li class="header">Fillter</li>
+								<li class="body"><img
+									src="https://www.imagesource.com/Doc/IS0/Media/TR16/5/1/c/c/24LB0002RF.jpg" /><a
+									href="#">You can collapse this card by </a></li>
+								<li class="body"><img
+									src="https://www.imagesource.com/Doc/IS0/Media/TR16/5/1/c/c/24LB0002RF.jpg" /><a
+									href="#">You can collapse this card by </a></li>
+							</ul>
+						</div> 
+					</div> -->
+				</div>
+			</div>
+			<nav>
+				<ul>
+					<li><a th:href="friends">My Friends</a></li>
+					<li><a th:href="friends-request">Friend Request</a></li>
+					<li><a href="#">Login</a>
+						<ul>
+							<li><a href="#">Login</a></li>
+						</ul></li>
+					<li><a href="#">Register</a>
+						<ul>
+							<li><a href="#">Register</a></li>
+						</ul></li>
+				</ul>
+			</nav>
+			<div id="wrapper">
+				<div class="hamburger menu" [ngClass]="status ? 'close' : ''"
+					(click)="clickedInsideMenu($event)">
+					<span class="line line01"></span> <span class="line line02"></span>
+					<span class="line line03"></span>
+				</div>
+			</div>
+
+		</header>
+</body>
+</html>

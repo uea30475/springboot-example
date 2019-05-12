@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="friends" class="wrapper">
+		<ul id="list-friends">
+<!-- 			<li th:if="${not #lists.isEmpty(friends)}"
+				th:each="friend : ${friends}">
+				<div class="item">
+					<img
+						src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" />
+					<div class="profile-content">
+						<a href="#" class="text-bold" th:text="${friend.fullName}"></a> <a
+							href="#" class="text-grey" th:text="${friend.fullName}">sdasd</a>
+					</div>
+					<div class="action ">
+						<a href="#" class="text-grey text-bold">Unfriend</a>
+					</div>
+				</div>
+			</li> -->
+		</ul>
+	</div>
+	<div th:fragment="friend_requests" class="wrapper">
+		<ul>
+			<li style="width: 100%" th:if="${#lists.isEmpty(users)}">Empty</li>
+			<li style="width: 100%" th:if="${not #lists.isEmpty(users)}" th:each="user : ${users}">
+				th:each="user : ${users}">
+				<div class="item">
+					<img
+						src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" />
+					<div class="profile-content">
+						<a href="#" class="text-bold" th:text="${user.fullName}"></a>
+					</div>
+					<div class="action ">
+						<a href="#" class="text-grey text-bold">Accept</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div th:fragment="search" class="wrapper">
+		<ul><li style="width: 100%" th:if="${#lists.isEmpty(users)}">Empty</li>
+			<li style="width: 100%" th:if="${not #lists.isEmpty(users)}" th:each="user :${users}">
+				<div class="item">
+					<img
+						src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" />
+					<div class="profile-content">
+						<a href="#" class="text-bold" th:text="${user.fullName}"></a>
+					</div>
+					<div class="action ">
+						<a href="#" class="text-grey text-bold">Send friend request</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+
+	</div>
+</body>
+</html>

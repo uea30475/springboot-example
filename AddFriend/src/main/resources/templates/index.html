@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="${title}"></title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/css/myapp.css}" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<script type="text/javascript">
+    window.title='[[${title}]]';
+    </script>
+</head>
+
+<body>
+	<input type="hidden" >
+	<div th:replace="~{fragments/header :: header}"></div>
+	<div class ="container">
+	<th:block th:if="${userClickListFriends}">
+        <div th:replace="~{fragments/my_friends :: friends}">
+        </div>
+    </th:block>
+    <th:block th:if="${userClickSearchFriends}">
+        <div th:replace="~{fragments/my_friends :: search}">
+        </div>
+    </th:block>
+    <th:block th:if="${userClickFriendRequest}">
+        <div th:replace="~{fragments/my_friends :: friend_requests}">
+        </div>
+    </th:block>
+	</div>
+	<script src="js/jQuery.js"></script>
+	<script src="js/myapp.js"></script>
+</body>
+</html>
