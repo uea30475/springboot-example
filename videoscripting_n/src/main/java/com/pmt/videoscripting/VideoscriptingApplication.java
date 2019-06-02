@@ -1,0 +1,13 @@
+package com.pmt.videoscripting;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class VideoscriptingApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(VideoscriptingApplication.class, args);
+	}
+
+}

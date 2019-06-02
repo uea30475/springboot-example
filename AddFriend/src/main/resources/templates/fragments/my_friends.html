@@ -51,7 +51,7 @@
 						<a href="#" class="text-bold" th:text="${user.fullName}"></a>
 					</div>
 					<div class="action ">
-						<a href="#" class="text-grey text-bold">Send friend request</a>
+						<a href="#" class="text-grey text-bold" th:onclick="'javascript:sendFriendRequest(\''+ ${a} +'\');'">Send friend request</a>
 					</div>
 				</div>
 			</li>

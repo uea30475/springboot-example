@@ -1,0 +1,46 @@
+.video {
+	display: inline-flex;
+	padding: 20px;
+	background: #F1F1F1;
+}
+
+.video-body {
+	width: 75%;
+	display: table-cell;
+	vertical-align: top;
+	height: 480px;
+}
+
+.video-body video {
+	width: 100%;
+	overflow: auto;
+}
+
+#video-script-sidebar {
+	width: 25%;
+	border: 1px solid #ddd;
+	overflow: auto;
+	display: table-cell;
+	height: 480px;
+}
+
+#video-script-sidebar span {
+	font-size: 16px;
+	/* border-bottom: 1px solid #ddd; */
+	display: flex;
+	padding: 8px 40px 8px 14px;
+	position: relative;
+	cursor: pointer;
+}
+
+span small {
+	padding: 2px 5px 0 0;
+}
+
+span:hover {
+	background: lightblue;
+}
+
+span.active {
+	color: red;
+}

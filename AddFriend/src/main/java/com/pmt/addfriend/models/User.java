@@ -1,123 +1,113 @@
 package com.pmt.addfriend.models;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class User implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
-	@Column(name="user_id",length = 32)
-	private String id;
-	@Column(name = "first_name", length = 32)
-	@JsonIgnore
-	private String firstName;
-	@Column(name = "last_name", length = 32)
-	@JsonIgnore
-	private String lastName;
-	@Column(length = 32)
-	@JsonIgnore
-	private String username;
-	
-	@ManyToMany(fetch=FetchType.LAZY)
-	@JoinTable(name = "user_friends", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "friend_id"))
-	@JsonIgnore
-	private Set<User> friends = new HashSet<User>();
-	@ManyToMany(mappedBy = "friends",fetch=FetchType.LAZY)
-	@JsonIgnoreProperties({"friends","befriends"})
-	private Set<User> befriends = new HashSet<User>();
-	@ManyToMany(fetch=FetchType.LAZY)
-	@JoinTable(name = "user_friend_request", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "friend_id"))
-	@JsonIgnore
-	private Set<User> friend_requests = new HashSet<User>();
-	@ManyToMany(mappedBy = "friend_requests",fetch=FetchType.LAZY)
-	@JsonIgnoreProperties({"friend_requests","befriend_requests"})
-	private Set<User> befriend_requests = new HashSet<User>();
-	
-	@Transient
-    public String getFullName() {
-        return firstName + " " + lastName + " ";
-    }
-	public Set<User> getFriends() {
-		return friends;
-	}
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+  @Id
+  @Column(name = "user_id", length = 32)
+  private String id;
+  @Column(name = "first_name", length = 32)
+  private String firstName;
+  @Column(name = "last_name", length = 32)
+  private String lastName;
+  private String gender;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+  @DateTimeFormat(pattern = "yyyy-mm-dd")
+  private Date  birthDate;
+  private String email;
+  
+  @Transient
+  private String fullName;
+  public String getFullName() {
+    return firstName + " " + lastName;
+  }
 
-	public void setFriends(Set<User> friends) {
-		this.friends = friends;
-	}
+  public void setFullName(String fullName) {
+  }
 
-	public Set<User> getBefriends() {
-		return befriends;
-	}
 
-	public void setBefriends(Set<User> befriends) {
-		this.befriends = befriends;
-	}
+  public String getEmail() {
+    return email;
+  }
 
-	@Column(length = 255)
-	@JsonIgnore
-	private String password;
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-	public User() {
-		this.id = UUID.randomUUID().toString().substring(32).toUpperCase();
-	}
+  private String phone;
 
-	public String getId() {
-		return id;
-	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
+  public String getGender() {
+	return gender;
+}
 
-	public String getFirstName() {
-		return firstName;
-	}
+public void setGender(String gender) {
+	this.gender = gender;
+}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+public Date getBirthDate() {
+    return birthDate;
+  }
 
-	public String getLastName() {
-		return lastName;
-	}
+  public void setBirthDate(Date birthDate) {
+    this.birthDate = birthDate;
+  }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+  public String getPhone() {
+    return phone;
+  }
 
-	public String getUsername() {
-		return username;
-	}
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+  public User() {
+    this.id = UUID.randomUUID().toString().substring(32).toUpperCase();
+  }
 
-	public String getPassword() {
-		return password;
-	}
+  public String getId() {
+    return id;
+  }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+
+
 
 }

@@ -1,0 +1,175 @@
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Management Board</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/css/myapp.css}" rel="stylesheet">
+<!--  <link rel="stylesheet" th:href="@{/css/handsontable.full.min.css}"> -->
+<link th:href="@{/css/video-js.css}" rel="stylesheet">
+<script th:src="@{/js/videojs-ie8.min.js}"></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<th:block th:if="${userClickVideoPage}">
+			<div th:replace="fragments/new::video"></div>
+
+		</th:block>
+
+		<th:block th:if="${userClickHomePage}">
+			<div th:replace="fragments/new::listVideo"></div>
+
+		</th:block>
+
+	</div>
+	<!--  <video class="video-js vjs-default-skin vjs-16-9 vjs-big-play-centered" controls id="my-video"></video> -->
+
+	<script type="text/javascript">
+		window.course = "[[${course}]]";
+		window.mediaHref
+	</script>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+
+		window.mediaHref= /*[[${mediaHref}]]*/
+
+   /*]]>*/
+	</script>
+	<script th:src="@{/js/jQuery.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<!-- <script th:src="@{/js/handsontable.full.min.js}"></script> -->
+	<script th:src='@{/js/video.js}'></script>
+	<th:block th:if="${userClickVideoPage}">
+		<script th:replace="fragments/new::videoPageScript">
+			
+		</script>
+
+	</th:block>
+
+	<!--  <script>
+        var dataObject = [
+            {
+                id: 13,
+                course: 'INR',
+                status: 'private',
+                url: 'https://handsontable.com/docs/7.0.3',
+                episode: 65.3724,
+                createdAt: '08/19/2014',
+                updatedAt: '08/19/2019',
+                user_agent: "ThiPM"
+            },
+            {
+                id: 14,
+                course: 'INR',
+                status: 'public',
+                url: 'https://handsontable.com/docs/7.0.3',
+                episode: 2.8689,
+                createdAt: '08/19/2016',
+                updatedAt: '08/19/2019',
+                user_agent: "ThiPM 2"
+            },
+
+        ];
+        var hotElement = document.querySelector('#hot');
+        var hotElementContainer = hotElement.parentNode;
+        var hotSettings = {
+            data: dataObject,
+            columns: [
+                {
+                    data: 'id',
+                    type: 'numeric',
+                    width: 40,
+                    editor: false,
+                },
+                {
+                    data: 'course',
+                    type: 'text',
+                },
+                {
+                    data: 'status',
+                    type: 'autocomplete',
+                    source: ['private', 'public'],
+                },
+                {
+                    data: 'url',
+                    type: 'text'
+                },
+                {
+                    data: 'episode',
+                    type: 'numeric',
+                    numericFormat: {
+                        pattern: '0.0'
+                    }
+                },
+                {
+                    data: 'createdAt',
+                    type: 'date',
+                    dateFormat: 'MM/DD/YYYY',
+                    editor: false,
+                },
+                {
+                    data: 'updatedAt',
+                    type: 'date',
+                    dateFormat: 'MM/DD/YYYY',
+                    editor: false,
+                },
+                {
+                    data: 'user_agent',
+                    type: 'text',
+                    editor: false
+                }
+            ],
+            stretchH: 'all',
+            // width: 884,
+            width: '100%',
+            autoWrapRow: true,
+            colWidths: [45, 80, 45, 100, 45, 50, 50, 50],
+            // height: 487,
+            //maxRows: 1,
+            rowHeaders: true,
+            contextMenu: true,
+            outsideClickDeselects: false,
+            currentRowClassName: 'currentRow',
+            currentColClassName: 'currentCol',
+            beforeChange: function (changes, source) {
+                lastChange = changes;
+            },
+            colHeaders: [
+                'ID',
+                'Course',
+                'Code',
+                'URL',
+                'Episode',
+                'Created At',
+                'Updated At',
+                'User Agent'
+            ]
+        };
+        var hot = new Handsontable(hotElement, hotSettings);
+        var lisRemove = []
+        let set = new Set();
+        hot.updateSettings({
+            afterChange: function (e) {
+                console.log(e);
+            },
+            beforeRemoveRow: function (e) {
+                console.log(set);
+            },
+            afterSelection: function (e) {
+                set.clear();
+                const selectedItem = hot.getSelectedRange();
+                for (let index = 0; index < selectedItem.length; index++) {
+                    const element = hot.getDataAtRow(selectedItem[index]['from']['row'])[0];
+                    set.add(element);
+                }
+            },
+            afterRemoveRow: function (e) {
+                set.clear();
+            }
+
+        });
+
+
+    </script> -->
+
+</body>
+</html>
